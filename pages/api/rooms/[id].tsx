@@ -13,5 +13,16 @@ export default async function handler(
         },
     })
     res.json(room)
+  } else if (req.method == 'PUT' ) {
+    const room = await prisma.room.update({
+      where: {
+        id: Number(req.query.id),
+      },
+      data: {
+        name: req.body.name,
+        max_capacity: req.body.max_capacity,
+      },
+    })
+    res.json(room)
   }
 }

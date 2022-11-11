@@ -20,6 +20,6 @@ model Room {
 model Visit {
   id       Int @id @default(autoincrement())
   is_enter Boolean // true: enter, false: exit
-  room     Room @relation(fields: [roomId], references: [id])
-  roomId   Int
+  room     Room @relation(fields: [room_id], references: [id])
+  room_id   Int
 }

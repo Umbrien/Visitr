@@ -9,7 +9,7 @@ export default async function handler(
   if (req.method === 'GET') {
     const visits = await prisma.visit.findMany()
     res.json(visits)
-  } else if (req.method == 'POST' ) {
+  } else if (req.method == 'POST') {
     const visit = await prisma.visit.create({
       data: {
         room_id: req.body.room_id,

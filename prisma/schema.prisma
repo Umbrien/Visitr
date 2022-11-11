@@ -11,16 +11,25 @@ datasource db {
 }
 
 model Room {
-  id           Int    @id @default(autoincrement())
+  id           Int         @id @default(autoincrement())
   name         String
   visits       Visit[]
+  controller   Controller?
   max_capacity Int
 }
 
 model Visit {
-  id       Int @id @default(autoincrement())
+  id       Int      @id @default(autoincrement())
   is_enter Boolean // true: enter, false: exit
   creation DateTime @default(now())
-  room     Room @relation(fields: [room_id], references: [id])
-  room_id   Int
+  room     Room     @relation(fields: [room_id], references: [id])
+  room_id  Int
+}
+
+model Controller {
+  id              Int      @id @default(autoincrement())
+  room            Room     @relation(fields: [room_id], references: [id])
+  room_id         Int      @unique
+  work_time_start DateTime
+  work_time_end   DateTime
 }

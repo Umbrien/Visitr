@@ -20,6 +20,7 @@ model Room {
 model Visit {
   id       Int @id @default(autoincrement())
   is_enter Boolean // true: enter, false: exit
+  creation DateTime @default(now())
   room     Room @relation(fields: [room_id], references: [id])
   room_id   Int
 }

@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { prisma } from '../../../lib/prisma'
+import { prisma } from '../../../prisma/prisma'
 
 
 export default async function handler(
@@ -8,12 +8,12 @@ export default async function handler(
 ) {
   if (req.method === 'GET') {
     const room = await prisma.room.findUnique({
-        where: {
-            id: Number(req.query.id),
-        },
+      where: {
+        id: Number(req.query.id),
+      },
     })
     res.json(room)
-  } else if (req.method == 'PUT' ) {
+  } else if (req.method == 'PUT') {
     const room = await prisma.room.update({
       where: {
         id: Number(req.query.id),

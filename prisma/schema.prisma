@@ -1,12 +1,15 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 generator dbml {
   provider = "prisma-dbml-generator"
+}
+
+generator erd {
+  provider = "prisma-erd-generator"
+  output   = "erd.png"
+  theme    = "neutral"
 }
 
 datasource db {

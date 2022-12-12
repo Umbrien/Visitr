@@ -37,3 +37,5 @@ next-env.d.ts
 
 # prisma
 .env
+prisma/dbml/schema.dbml
+prisma/erd.png

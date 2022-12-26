@@ -21,6 +21,7 @@ export default async function handler(
       data: {
         name: req.body.name,
         max_capacity: req.body.max_capacity,
+        admin_id: req.body.admin_id,
       },
     })
     res.json(room)

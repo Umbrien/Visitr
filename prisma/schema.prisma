@@ -13,8 +13,9 @@ generator erd {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 model Room {
@@ -23,6 +24,8 @@ model Room {
   visits       Visit[]
   controller   Controller?
   max_capacity Int
+  admin        Admin?      @relation(fields: [admin_id], references: [id])
+  admin_id     Int?
 }
 
 model Visit {
@@ -37,4 +40,13 @@ model Controller {
   id      Int  @id @default(autoincrement())
   room    Room @relation(fields: [room_id], references: [id])
   room_id Int  @unique
+}
+
+model Admin {
+  id       Int    @id @default(autoincrement())
+  username String @unique
+  password String
+  email    String @unique
+  phone    String @unique
+  rooms    Room[]
 }

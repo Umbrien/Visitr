@@ -40,7 +40,7 @@ function VisitButton({onClick, variant, children}: {
 export default function SendVisits({visitsCount}: {visitsCount: number}) {
   const [visits, setVisits] = useState(visitsCount);
   function enter() {
-    fetch(`${API_URL}/api/visits`, {
+    fetch(`${API_URL}/visits`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -57,7 +57,7 @@ export default function SendVisits({visitsCount}: {visitsCount: number}) {
   }
 
   function exit() {
-    fetch(`${API_URL}/api/visits`, {
+    fetch(`${API_URL}/visits`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
